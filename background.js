@@ -40,7 +40,8 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 async function stopAllMedia() {
   const tabs = await chrome.tabs.query({});
   tabs.forEach(tab => {
-    if (tab.id) {
+    // 检查URL是否可以注入脚本
+    if (tab.id && tab.url && isInjectableUrl(tab.url)) {
       // 向标签页注入脚本停止媒体
       chrome.scripting.executeScript({
         target: { tabId: tab.id },
@@ -57,6 +58,20 @@ async function stopAllMedia() {
       });
     }
   });
+}
+
+// 检查URL是否可以注入脚本
+function isInjectableUrl(url) {
+  // 检查是否是Chrome内部页面或其他特殊页面
+  return url &&
+    !url.startsWith('chrome://') &&
+    !url.startsWith('chrome-extension://') &&
+    !url.startsWith('chrome-search://') &&
+    !url.startsWith('chrome-devtools://') &&
+    !url.startsWith('devtools://') &&
+    !url.startsWith('about:') &&
+    !url.startsWith('edge://') &&  // 为Edge浏览器添加的
+    !url.startsWith('brave://');   // 为Brave浏览器添加的
 }
 
 // 更新扩展图标上的徽章
