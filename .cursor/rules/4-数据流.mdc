@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 数据流说明
+
+本扩展的各组件之间通过以下方式进行数据交换：
+
+## 消息传递
+
+1. 从 [popup.js](mdc:popup.js) 到 [background.js](mdc:background.js) 的消息：
+   - `startCountdown` - 开始倒计时，包含分钟数参数
+   - `stopCountdown` - 停止倒计时
+   - `getStatus` - 获取当前倒计时状态和剩余时间
+
+2. 从 [background.js](mdc:background.js) 返回的响应：
+   - 成功/失败状态
+   - 倒计时状态和剩余时间
+
+## 数据存储
+
+使用 Chrome 的 storage API 存储设置：
+- `defaultMinutes` - 默认倒计时分钟数
+- `notification` - 是否在倒计时结束时显示通知
+
+设置可以在 [options.html](mdc:options.html) 中修改，并在 [popup.js](mdc:popup.js) 和 [background.js](mdc:background.js) 中读取。
+

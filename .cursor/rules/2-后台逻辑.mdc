@@ -1,0 +1,18 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 后台逻辑说明
+
+[background.js](mdc:background.js) 文件包含了扩展的核心功能实现：
+
+1. 倒计时管理 - 使用 Chrome 的 alarms API 来管理倒计时
+2. 媒体控制 - 通过 scripting API 向所有标签页注入脚本停止媒体播放
+3. 状态管理 - 维护倒计时状态并更新扩展图标上的徽章
+
+## 主要功能
+
+- `stopAllMedia()` - 停止所有标签页中的音视频播放
+- `updateBadge()` - 更新扩展图标上的徽章显示剩余时间
+- 消息监听 - 响应来自弹出窗口的 `startCountdown`、`stopCountdown` 和 `getStatus` 命令

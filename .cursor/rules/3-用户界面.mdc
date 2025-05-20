@@ -1,0 +1,25 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 用户界面
+
+本扩展包含两个主要界面：
+
+## 弹出窗口
+
+[popup.html](mdc:popup.html) 和 [popup.js](mdc:popup.js) 构成了点击扩展图标时显示的弹出窗口：
+
+- 用户可以输入倒计时分钟数（1-1440分钟）
+- 点击按钮开始或停止倒计时
+- 实时显示倒计时状态和剩余时间
+- 提供设置页面的链接
+
+## 设置页面
+
+[options.html](mdc:options.html) 提供了扩展的设置界面：
+
+- 设置默认倒计时分钟数
+- 控制是否在倒计时结束时显示通知
+- 保存设置到 Chrome 存储中

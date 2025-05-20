@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体自动停止</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .time-input {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    input[type="number"] {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #3367d6;
+    }
+
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+
+    .status.running {
+      color: #d32f2f;
+    }
+
+    .options-link {
+      margin-top: 15px;
+      text-align: right;
+    }
+
+    .options-link a {
+      color: #757575;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .options-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>媒体自动停止</h3>
+
+  <div class="time-input">
+    <input type="number" id="minutes" min="1" max="1440" placeholder="输入分钟数" value="30">
+    <button id="startBtn">开始倒计时</button>
+  </div>
+
+  <div id="status" class="status">
+    <p>倒计时未启动</p>
+  </div>
+
+  <div class="options-link">
+    <a href="#" id="optionsLink">设置</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

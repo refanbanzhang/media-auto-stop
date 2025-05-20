@@ -1,0 +1,32 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 开发指南
+
+## 关键 API
+
+本扩展使用了以下 Chrome 扩展 API：
+
+1. `chrome.alarms` - 管理倒计时
+2. `chrome.scripting` - 向标签页注入脚本控制媒体
+3. `chrome.storage` - 保存和读取设置
+4. `chrome.action` - 控制扩展图标和徽章
+5. `chrome.notifications` - 显示通知
+
+## 扩展功能
+
+当添加新功能时，注意以下几点：
+
+1. 媒体控制：
+   - 所有媒体控制逻辑应在 [background.js](mdc:background.js) 的 `stopAllMedia()` 函数中实现
+   - 通过 `chrome.scripting.executeScript` 注入脚本停止媒体
+
+2. 用户界面：
+   - 保持弹出窗口 [popup.html](mdc:popup.html) 和设置页面 [options.html](mdc:options.html) 的风格一致
+   - 界面逻辑应与核心功能分离
+
+3. 数据存储：
+   - 所有用户设置应通过 `chrome.storage.sync` 保存和读取
+
